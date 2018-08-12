@@ -1,14 +1,14 @@
 package anum.databinding.login;
 
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import anum.databinding.Base.BaseActivity;
 import anum.databinding.R;
 import anum.databinding.databinding.ActivityLoginBinding;
 import anum.databinding.utils.Utils;
 
-public class LoginActivity extends AppCompatActivity implements LoginHandler, LoginNavigator {
+public class LoginActivity extends BaseActivity implements LoginHandler, LoginNavigator {
 
     ActivityLoginBinding loginBinding;
     LoginViewModel loginViewModel;
@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity implements LoginHandler, Lo
 
     @Override
     public void onLogin() {
+        hideKeyboard();
         if(!loginViewModel.isValidUsernameAndPassword(
                 loginBinding.editUsername.getText().toString(),
                 loginBinding.editPassword.getText().toString()

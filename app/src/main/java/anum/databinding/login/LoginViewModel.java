@@ -2,9 +2,11 @@ package anum.databinding.login;
 
 import android.text.TextUtils;
 
+import java.lang.ref.WeakReference;
+
 public class LoginViewModel {
 
-    private LoginNavigator navigator;
+    private WeakReference<LoginNavigator> navigator;
 
     public boolean isValidUsernameAndPassword(String username, String password) {
 
@@ -16,12 +18,12 @@ public class LoginViewModel {
 
     public void validateUserFromServer() {
         //You can do this after async call
-        if(navigator != null) {
-            navigator.navigateToHomeScreen();
+        if(navigator.get() != null) {
+            navigator.get().navigateToHomeScreen();
         }
     }
 
     public void setNavigator(LoginNavigator navigator) {
-        this.navigator = navigator;
+        this.navigator = new WeakReference(navigator);
     }
 }
