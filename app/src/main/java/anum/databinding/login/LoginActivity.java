@@ -1,11 +1,14 @@
 package anum.databinding.login;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import anum.databinding.Base.BaseActivity;
+import anum.databinding.Home.HomeActivity;
 import anum.databinding.R;
 import anum.databinding.databinding.ActivityLoginBinding;
+import anum.databinding.models.UserModel;
 import anum.databinding.utils.Utils;
 
 public class LoginActivity extends BaseActivity implements LoginHandler, LoginNavigator {
@@ -34,11 +37,15 @@ public class LoginActivity extends BaseActivity implements LoginHandler, LoginNa
             return;
         }
         //TODO: In activity or viewmodel?
-        loginViewModel.validateUserFromServer();
+        loginViewModel.validateUserFromServer(
+                loginBinding.editUsername.getText().toString(),
+                loginBinding.editPassword.getText().toString());
     }
 
     @Override
-    public void navigateToHomeScreen() {
-
+    public void navigateToHomeScreen(UserModel userModel) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra("user", userModel);
+        startActivity(intent);
     }
 }

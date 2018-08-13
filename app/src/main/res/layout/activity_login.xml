@@ -54,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Password"/>
+                android:hint="Password"
+                android:inputType="textPassword"/>
 
             <android.support.v7.widget.AppCompatButton
                 android:layout_width="match_parent"
@@ -62,7 +63,8 @@
                 android:text="Sign In"
                 android:background="@color/colorPrimary"
                 android:layout_marginTop="30dp"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:onClick="@{() -> callback.onLogin()}"/>
 
         </LinearLayout>
 
