@@ -13,4 +13,13 @@ public class MockService {
             }
         }, DELAY);
     }
+
+    public void getLocations(final ServiceCallback callback) {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                callback.successExecution(MockResponse.getPlaces());
+            }
+        }, DELAY);
+    }
 }

@@ -33,10 +33,6 @@ public class UserModel implements Parcelable {
         return tenure;
     }
 
-    public String getFormattedTenure() {
-        return String.format("%d years",tenure);
-    }
-
     protected UserModel(Parcel in) {
         firstname = in.readString();
         lastname = in.readString();

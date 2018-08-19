@@ -8,7 +8,7 @@ import android.support.v7.app.AlertDialog;
  * Created by ANUM on 9/19/2017.
  */
 
-public class Utils {
+public class CommonUtils {
 
     public static void showAlertDialog(Context context, String message) {
         AlertDialog alertDialog = new AlertDialog.Builder(context).create();

@@ -5,11 +5,11 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import anum.databinding.Base.BaseActivity;
-import anum.databinding.Home.HomeActivity;
+import anum.databinding.home.HomeActivity;
 import anum.databinding.R;
 import anum.databinding.databinding.ActivityLoginBinding;
 import anum.databinding.models.UserModel;
-import anum.databinding.utils.Utils;
+import anum.databinding.utils.CommonUtils;
 
 public class LoginActivity extends BaseActivity implements LoginHandler, LoginNavigator {
 
@@ -22,7 +22,6 @@ public class LoginActivity extends BaseActivity implements LoginHandler, LoginNa
         loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         loginViewModel = new LoginViewModel();
         loginViewModel.setNavigator(this);
-        loginBinding.setLoginModel(loginViewModel);
         loginBinding.setCallback(this);
     }
 
@@ -33,10 +32,9 @@ public class LoginActivity extends BaseActivity implements LoginHandler, LoginNa
                 loginBinding.editUsername.getText().toString(),
                 loginBinding.editPassword.getText().toString()
         )) {
-            Utils.showAlertDialog(this, "Please enter valid username or password");
+            CommonUtils.showAlertDialog(this, "Please enter valid username or password");
             return;
         }
-        //TODO: In activity or viewmodel?
         loginViewModel.validateUserFromServer(
                 loginBinding.editUsername.getText().toString(),
                 loginBinding.editPassword.getText().toString());

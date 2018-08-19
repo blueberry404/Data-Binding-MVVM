@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="user"
-            type="anum.databinding.models.UserModel" />
+            name="viewModel"
+            type="anum.databinding.home.HomeViewModel" />
     </data>
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Home.HomeActivity"
+        tools:context=".home.HomeActivity"
         android:background="@drawable/background">
 
         <View
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text='@{user.firstname + " " + user.lastname}'
+            android:text="@{viewModel.name}"
             android:textColor="@android:color/white"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="@+id/textView"
@@ -47,7 +47,7 @@
             android:id="@+id/txtEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text='@{user.email ?? @string/txt_not_applied}'
+            android:text='@{viewModel.email ?? @string/txt_not_applied}'
             android:layout_marginTop="10dp"
             android:textColor="@android:color/white"
             android:textSize="18sp"
@@ -58,7 +58,7 @@
             android:id="@+id/txtTenure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text='@{"You have been member since " + user.formattedTenure}'
+            android:text="@{@string/txt_member_since(viewModel.tenure)}"
             android:layout_marginTop="20dp"
             android:textColor="@android:color/white"
             android:textSize="15sp"

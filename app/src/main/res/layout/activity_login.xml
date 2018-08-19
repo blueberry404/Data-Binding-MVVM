@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="loginModel"
-            type="anum.databinding.login.LoginViewModel" />
-        <variable
             name="callback"
             type="anum.databinding.login.LoginHandler" />
     </data>

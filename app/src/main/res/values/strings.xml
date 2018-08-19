@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">DataBinding</string>
     <string name="txt_not_applied">N/A</string>
+    <string name="txt_member_since">You have been member since %s</string>
 </resources>
