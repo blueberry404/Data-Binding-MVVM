@@ -3,7 +3,7 @@ package anum.databinding.service;
 import android.os.Handler;
 
 public class MockService {
-    private static int DELAY = 2000;
+    private static int DELAY = 0;
 
     public void loginUser(String username, String password, final ServiceCallback callback) {
         new Handler().postDelayed(new Runnable() {

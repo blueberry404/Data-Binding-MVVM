@@ -17,7 +17,8 @@ public final class BindingUtils {
     @BindingAdapter("adapter")
     public static void setLocationListAdapter(RecyclerView recyclerView, ArrayList<LocationListItemViewModel> list) {
         LocationListAdapter adapter = (LocationListAdapter) recyclerView.getAdapter();
-        adapter.setItems(list);
+        if(list != null)
+            adapter.setItems(list);
     }
 
     @BindingAdapter(value={"imageURL", "placeholder"}, requireAll=false)

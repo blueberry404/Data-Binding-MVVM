@@ -28,16 +28,13 @@ public class LoginActivity extends BaseActivity implements LoginHandler, LoginNa
     @Override
     public void onLogin() {
         hideKeyboard();
-        if(!loginViewModel.isValidUsernameAndPassword(
-                loginBinding.editUsername.getText().toString(),
-                loginBinding.editPassword.getText().toString()
-        )) {
+        String username = loginBinding.editUsername.getText().toString();
+        String password = loginBinding.editPassword.getText().toString();
+        if(!loginViewModel.isValidUsernameAndPassword(username, password)) {
             CommonUtils.showAlertDialog(this, "Please enter valid username or password");
             return;
         }
-        loginViewModel.validateUserFromServer(
-                loginBinding.editUsername.getText().toString(),
-                loginBinding.editPassword.getText().toString());
+        loginViewModel.validateUserFromServer(username, password);
     }
 
     @Override
@@ -45,5 +42,6 @@ public class LoginActivity extends BaseActivity implements LoginHandler, LoginNa
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("user", userModel);
         startActivity(intent);
+        finish();
     }
 }
