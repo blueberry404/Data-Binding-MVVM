@@ -13,10 +13,10 @@ import anum.databinding.service.ServiceCallback;
 
 public class LocationListViewModel extends BaseObservable {
 
-    private ArrayList<LocationListItemViewModel> list = new ArrayList<>();
+    private ArrayList<PlaceModel> list = new ArrayList<>();
     private LocationListHandler callback;
 
-    public ArrayList<LocationListItemViewModel> getList() {
+    public ArrayList<PlaceModel> getList() {
         return list;
     }
 
@@ -28,16 +28,9 @@ public class LocationListViewModel extends BaseObservable {
         new MockService().getLocations(new ServiceCallback() {
             @Override
             public void successExecution(Object response) {
-                createViewholdersFromData((List<PlaceModel>) response);
+                list = (ArrayList<PlaceModel>) response;
                 callback.updateItems(list);
             }
         });
-    }
-
-    void createViewholdersFromData(List<PlaceModel> placeModels) {
-        for(PlaceModel model : placeModels) {
-            LocationListItemViewModel itemViewModel = new LocationListItemViewModel(model);
-            list.add(itemViewModel);
-        }
     }
 }

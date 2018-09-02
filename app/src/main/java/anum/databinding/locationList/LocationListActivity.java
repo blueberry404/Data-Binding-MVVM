@@ -41,7 +41,7 @@ public class LocationListActivity extends AppCompatActivity implements LocationL
     }
 
     @Override
-    public void updateItems(ArrayList<LocationListItemViewModel> list) {
+    public void updateItems(ArrayList<PlaceModel> list) {
         adapter.setItems(list);
     }
 }

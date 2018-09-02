@@ -13,11 +13,12 @@ import java.util.List;
 
 import anum.databinding.R;
 import anum.databinding.databinding.ItemLocationBinding;
+import anum.databinding.models.PlaceModel;
 
 public class LocationListAdapter extends RecyclerView.Adapter<LocationListViewHolder> {
 
     private Context context;
-    private List<LocationListItemViewModel> list = new ArrayList<>();
+    private List<PlaceModel> list = new ArrayList<>();
 
     public LocationListAdapter(Context context) {
         this.context = context;
@@ -33,7 +34,7 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListViewHo
 
     @Override
     public void onBindViewHolder(@NonNull LocationListViewHolder holder, int position) {
-        holder.populateData(list.get(position));
+        holder.populateData(new LocationListItemViewModel(list.get(position)));
     }
 
     @Override
@@ -41,7 +42,7 @@ public class LocationListAdapter extends RecyclerView.Adapter<LocationListViewHo
         return list.size();
     }
 
-    public void setItems(List<LocationListItemViewModel> items) {
+    public void setItems(List<PlaceModel> items) {
         list.addAll(items);
         notifyDataSetChanged();
     }
