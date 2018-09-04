@@ -38,4 +38,12 @@ public class CommonUtils {
         builder.setNegativeButton(negativeButtonTitle, negativeListener);
         builder.show();
     }
+
+    static public boolean isNullOrEmptyString(String str) {
+        if(str == null)
+            return true;
+        if(str.length() == 0)
+            return true;
+        return false;
+    }
 }

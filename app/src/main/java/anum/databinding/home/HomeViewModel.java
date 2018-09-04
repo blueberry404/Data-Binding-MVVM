@@ -1,6 +1,7 @@
 package anum.databinding.home;
 
 import anum.databinding.models.UserModel;
+import anum.databinding.utils.CommonUtils;
 
 public class HomeViewModel {
 
@@ -11,7 +12,15 @@ public class HomeViewModel {
     }
 
     public String getName() {
-        return String.format("%s %s", user.getFirstname(), user.getLastname());
+        StringBuilder builder = new StringBuilder();
+        if(!CommonUtils.isNullOrEmptyString(user.getFirstname()))
+            builder.append(user.getFirstname());
+        if(!CommonUtils.isNullOrEmptyString(user.getLastname())) {
+            if(builder.length() > 0)
+                builder.append(" ");
+            builder.append(user.getLastname());
+        }
+        return builder.toString();
     }
 
     public String getEmail() {
