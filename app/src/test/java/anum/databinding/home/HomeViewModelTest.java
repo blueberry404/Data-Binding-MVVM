@@ -1,7 +1,5 @@
 package anum.databinding.home;
 
-import android.text.TextUtils;
-
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
