@@ -5,7 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-public class BaseActivity extends AppCompatActivity {
+import anum.databinding.data.AppRepository;
+
+public abstract class BaseActivity extends AppCompatActivity {
+
+    protected abstract AppRepository getRepository();
 
     protected void hideKeyboard() {
         View view = this.getCurrentFocus();

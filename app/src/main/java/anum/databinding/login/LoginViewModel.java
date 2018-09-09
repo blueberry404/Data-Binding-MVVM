@@ -1,17 +1,21 @@
 package anum.databinding.login;
 
-import android.text.TextUtils;
-
 import java.lang.ref.WeakReference;
 
-import anum.databinding.models.UserModel;
-import anum.databinding.service.MockService;
+import anum.databinding.data.AppRepository;
+import anum.databinding.models.User;
 import anum.databinding.service.ServiceCallback;
 import anum.databinding.utils.CommonUtils;
 
 public class LoginViewModel {
 
     private WeakReference<LoginNavigator> navigator;
+    private AppRepository repository;
+
+    public LoginViewModel(AppRepository repository, LoginNavigator navigator) {
+        this.repository = repository;
+        this.navigator = new WeakReference(navigator);
+    }
 
     public boolean isValidUsernameAndPassword(String username, String password) {
 
@@ -23,18 +27,14 @@ public class LoginViewModel {
     }
 
     public void validateUserFromServer(String username, String password) {
-        new MockService().loginUser(username, password, new ServiceCallback() {
+        repository.loginUser(username, password, new ServiceCallback() {
             @Override
             public void successExecution(Object response) {
                 if(navigator.get() != null) {
-                    navigator.get().navigateToHomeScreen((UserModel) response);
+                    navigator.get().navigateToHomeScreen((User) response);
                 }
             }
         });
 
-    }
-
-    public void setNavigator(LoginNavigator navigator) {
-        this.navigator = new WeakReference(navigator);
     }
 }

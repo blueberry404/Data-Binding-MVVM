@@ -5,10 +5,12 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import anum.databinding.Base.BaseActivity;
+import anum.databinding.data.AppRepository;
 import anum.databinding.home.HomeActivity;
 import anum.databinding.R;
 import anum.databinding.databinding.ActivityLoginBinding;
-import anum.databinding.models.UserModel;
+import anum.databinding.models.User;
+import anum.databinding.service.AppRepositoryRemoteImpl;
 import anum.databinding.utils.CommonUtils;
 
 public class LoginActivity extends BaseActivity implements LoginHandler, LoginNavigator {
@@ -20,8 +22,7 @@ public class LoginActivity extends BaseActivity implements LoginHandler, LoginNa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loginBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        loginViewModel = new LoginViewModel();
-        loginViewModel.setNavigator(this);
+        loginViewModel = new LoginViewModel(getRepository(), this);
         loginBinding.setCallback(this);
     }
 
@@ -38,10 +39,15 @@ public class LoginActivity extends BaseActivity implements LoginHandler, LoginNa
     }
 
     @Override
-    public void navigateToHomeScreen(UserModel userModel) {
+    public void navigateToHomeScreen(User user) {
         Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("user", userModel);
+        intent.putExtra("user", user);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected AppRepository getRepository() {
+        return new AppRepositoryRemoteImpl();
     }
 }

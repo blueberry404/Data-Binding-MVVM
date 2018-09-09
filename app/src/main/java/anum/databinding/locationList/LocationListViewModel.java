@@ -1,14 +1,11 @@
 package anum.databinding.locationList;
 
 import android.databinding.BaseObservable;
-import android.databinding.ObservableArrayList;
-import android.databinding.ObservableList;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import anum.databinding.models.PlaceModel;
-import anum.databinding.service.MockService;
+import anum.databinding.service.AppRepositoryMockImpl;
 import anum.databinding.service.ServiceCallback;
 
 public class LocationListViewModel extends BaseObservable {
@@ -25,7 +22,7 @@ public class LocationListViewModel extends BaseObservable {
     }
 
     public void fetchPlacesList() {
-        new MockService().getLocations(new ServiceCallback() {
+        new AppRepositoryMockImpl().getLocations(new ServiceCallback() {
             @Override
             public void successExecution(Object response) {
                 list = (ArrayList<PlaceModel>) response;

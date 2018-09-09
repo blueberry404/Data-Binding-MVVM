@@ -5,12 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import anum.databinding.models.PlaceModel;
-import anum.databinding.models.UserModel;
+import anum.databinding.models.User;
 
 public class MockResponse {
 
-    public static UserModel getUserData() {
-        UserModel user = new UserModel("David", "Henry",
+    public static User getUserData() {
+        User user = new User("David", "Henry",
                 "david.henry@gmail.com", 3);
         return user;
     }

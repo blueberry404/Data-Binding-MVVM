@@ -1,9 +1,9 @@
 package anum.databinding.login;
 
-import anum.databinding.models.UserModel;
+import anum.databinding.models.User;
 
 public interface LoginNavigator {
 
     void onLogin();
-    void navigateToHomeScreen(UserModel userModel);
+    void navigateToHomeScreen(User user);
 }

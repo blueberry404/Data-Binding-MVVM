@@ -3,14 +3,14 @@ package anum.databinding.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class UserModel implements Parcelable {
+public class User implements Parcelable {
 
     String firstname;
     String lastname;
     String email;
     int tenure;
 
-    public UserModel(String firstname, String lastname, String email, int tenure) {
+    public User(String firstname, String lastname, String email, int tenure) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -33,7 +33,7 @@ public class UserModel implements Parcelable {
         return tenure;
     }
 
-    protected UserModel(Parcel in) {
+    protected User(Parcel in) {
         firstname = in.readString();
         lastname = in.readString();
         email = in.readString();
@@ -54,15 +54,15 @@ public class UserModel implements Parcelable {
     }
 
     @SuppressWarnings("unused")
-    public static final Parcelable.Creator<UserModel> CREATOR = new Parcelable.Creator<UserModel>() {
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
         @Override
-        public UserModel createFromParcel(Parcel in) {
-            return new UserModel(in);
+        public User createFromParcel(Parcel in) {
+            return new User(in);
         }
 
         @Override
-        public UserModel[] newArray(int size) {
-            return new UserModel[size];
+        public User[] newArray(int size) {
+            return new User[size];
         }
     };
 }

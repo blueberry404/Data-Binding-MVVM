@@ -8,7 +8,7 @@ import android.os.Bundle;
 import anum.databinding.R;
 import anum.databinding.databinding.ActivityHomeBinding;
 import anum.databinding.locationList.LocationListActivity;
-import anum.databinding.models.UserModel;
+import anum.databinding.models.User;
 
 public class HomeActivity extends AppCompatActivity implements HomeHandler {
 
@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity implements HomeHandler {
 
     void populateUserInitials() {
         if(getIntent() != null) {
-            UserModel user = getIntent().getParcelableExtra("user");
+            User user = getIntent().getParcelableExtra("user");
             viewModel = new HomeViewModel(user);
             homeBinding.setViewModel(viewModel);
         }

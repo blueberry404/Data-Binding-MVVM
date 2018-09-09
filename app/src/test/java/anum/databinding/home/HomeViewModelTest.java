@@ -7,14 +7,14 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import anum.databinding.models.UserModel;
+import anum.databinding.models.User;
 
 import static org.mockito.Mockito.when;
 
 public class HomeViewModelTest {
 
     @Mock
-    UserModel user;
+    User user;
 
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();

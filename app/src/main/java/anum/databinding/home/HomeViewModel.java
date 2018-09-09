@@ -1,13 +1,13 @@
 package anum.databinding.home;
 
-import anum.databinding.models.UserModel;
+import anum.databinding.models.User;
 import anum.databinding.utils.CommonUtils;
 
 public class HomeViewModel {
 
-    UserModel user;
+    User user;
 
-    public HomeViewModel(UserModel user) {
+    public HomeViewModel(User user) {
         this.user = user;
     }
 
