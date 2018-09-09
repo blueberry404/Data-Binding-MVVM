@@ -3,7 +3,6 @@ package anum.databinding.utils;
 import org.junit.Assert;
 import org.junit.Test;
 
-//@RunWith(MockitoJUnitRunner.class)
 public class CommonUtilsTest {
 
     @Test

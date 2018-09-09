@@ -7,6 +7,7 @@ import java.lang.ref.WeakReference;
 import anum.databinding.models.UserModel;
 import anum.databinding.service.MockService;
 import anum.databinding.service.ServiceCallback;
+import anum.databinding.utils.CommonUtils;
 
 public class LoginViewModel {
 
@@ -14,7 +15,8 @@ public class LoginViewModel {
 
     public boolean isValidUsernameAndPassword(String username, String password) {
 
-        if(TextUtils.isEmpty(username) || TextUtils.isEmpty(password))
+        if(CommonUtils.isNullOrEmptyString(username) ||
+                CommonUtils.isNullOrEmptyString(password))
             return false;
 
         return true;
