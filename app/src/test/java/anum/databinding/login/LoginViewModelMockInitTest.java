@@ -7,13 +7,16 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
+import anum.databinding.models.User;
 import anum.databinding.service.AppRepositoryMockImpl;
 import anum.databinding.service.ServiceCallback;
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyString;
-import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -49,11 +52,38 @@ public class LoginViewModelMockInitTest {
     }
 
     @Test
-    public void checkIfNavigatorCalledAfterLogin() {
-        model.validateUserFromServer("anum", "123");
+    public void checkIfNavigatorCalledAfterLogin_UsingDoAnswer() {
         Assert.assertNotNull(navigator);
-        //TODO: Following line fails
-        verify(navigator, atLeast(1)).navigateToHomeScreen(null);
+        doAnswer(new Answer() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+
+                ServiceCallback<User> callback = invocation.getArgument(1);
+                User user = new User();
+                callback.successExecution(user);
+                verify(navigator, times(1)).navigateToHomeScreen(user);
+
+                return null;
+            }
+        }).when(service).loginUser(null,null,null);
+
+        model.validateUserFromServer("anum", "123");
+
+    }
+
+
+    @Test
+    public void checkIfNavigatorCalledAfterLogin_UsingArgCapture() {
+        ArgumentCaptor<ServiceCallback<User>> captor = ArgumentCaptor.forClass(ServiceCallback.class);
+        Assert.assertNotNull(navigator);
+
+        model.validateUserFromServer("anum", "123");
+        verify(service).loginUser(anyString(), anyString(), captor.capture());
+
+        ServiceCallback<User> callback = captor.getValue();
+        User user = new User();
+        callback.successExecution(user);
+        verify(navigator, times(1)).navigateToHomeScreen(user);
     }
 
     @Test

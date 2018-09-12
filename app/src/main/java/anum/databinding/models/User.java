@@ -10,6 +10,8 @@ public class User implements Parcelable {
     String email;
     int tenure;
 
+    public User() {}
+
     public User(String firstname, String lastname, String email, int tenure) {
         this.firstname = firstname;
         this.lastname = lastname;

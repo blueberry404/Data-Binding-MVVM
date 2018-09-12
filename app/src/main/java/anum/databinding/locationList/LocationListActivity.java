@@ -9,11 +9,14 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
+import anum.databinding.Base.BaseActivity;
 import anum.databinding.R;
+import anum.databinding.data.AppRepository;
 import anum.databinding.databinding.ActivityLocationListBinding;
 import anum.databinding.models.PlaceModel;
+import anum.databinding.service.AppRepositoryMockImpl;
 
-public class LocationListActivity extends AppCompatActivity implements LocationListHandler {
+public class LocationListActivity extends BaseActivity implements LocationListHandler {
 
     ActivityLocationListBinding binding;
     LocationListViewModel viewModel;
@@ -23,7 +26,7 @@ public class LocationListActivity extends AppCompatActivity implements LocationL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_location_list);
-        viewModel = new LocationListViewModel();
+        viewModel = new LocationListViewModel(getRepository());
         viewModel.setCallback(this);
     }
 
@@ -43,5 +46,10 @@ public class LocationListActivity extends AppCompatActivity implements LocationL
     @Override
     public void updateItems(ArrayList<PlaceModel> list) {
         adapter.setItems(list);
+    }
+
+    @Override
+    protected AppRepository getRepository() {
+        return new AppRepositoryMockImpl();
     }
 }
