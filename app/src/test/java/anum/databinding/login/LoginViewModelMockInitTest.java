@@ -27,7 +27,7 @@ public class LoginViewModelMockInitTest {
     AppRepositoryMockImpl service;
 
     @Mock
-    LoginActivity navigator;
+    LoginNavigator navigator;
 
     LoginViewModel model;
 
